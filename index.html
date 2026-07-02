@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>工房づくり相談アーカイブ</title>
+<link rel="stylesheet" href="css/style.css">
+
+<!-- PWA / mobile home screen support -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7a5230">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="工房相談">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <h1>🧁 工房づくり相談アーカイブ</h1>
+    <p class="tagline">「工房を作りたい人」と「すでに工房を作った先輩たち」のQ&amp;Aと工房プロフィールをまとめました</p>
+  </div>
+  <nav class="tabs">
+    <button class="tab-btn active" data-view="home">ホーム</button>
+    <button class="tab-btn" data-view="qa">Q&amp;A集</button>
+    <button class="tab-btn" data-view="profiles">工房タイプ別プロフィール</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section id="view-home" class="view active">
+    <div class="card intro-card">
+      <h2>このサイトについて</h2>
+      <p>
+        以前、「工房を作りたい人」が「すでに工房を作ったアドバイザーの方々」に質問できるオープンチャットの企画を実施しました。
+        そのときに交わされたリアルな質問・回答と、アドバイザーの皆さんが事前に共有してくださった工房情報（費用・良かった点・失敗談・アドバイスなど）を、
+        誰でも読み返せる形にまとめたのがこのサイトです。
+      </p>
+      <p class="note">※アドバイザーごとの実際の写真・動画は準備が整い次第、順次追加しています。まだ写真がない工房はサンプル画像で表示しています。</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-num" id="stat-advisors">-</div>
+        <div class="stat-label">工房アドバイザー</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="stat-qa">-</div>
+        <div class="stat-label">Q&amp;A・情報投稿</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="stat-categories">-</div>
+        <div class="stat-label">話題カテゴリ</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>カテゴリから探す</h2>
+      <div id="home-category-chips" class="chip-list"></div>
+    </div>
+
+    <div class="card">
+      <h2>工房タイプから探す</h2>
+      <div id="home-type-chips" class="chip-list"></div>
+    </div>
+  </section>
+
+  <!-- QA -->
+  <section id="view-qa" class="view">
+    <div class="controls-bar">
+      <input type="search" id="qa-search" placeholder="キーワードで検索（例：トイレ、冷蔵庫、助成金 など）">
+      <div id="qa-category-chips" class="chip-list"></div>
+    </div>
+    <div id="qa-list" class="qa-list"></div>
+    <p id="qa-empty" class="empty-msg" hidden>該当する内容が見つかりませんでした。</p>
+  </section>
+
+  <!-- PROFILES -->
+  <section id="view-profiles" class="view">
+    <div class="controls-bar">
+      <div id="profile-type-chips" class="chip-list"></div>
+    </div>
+    <div id="profiles-grid" class="profiles-grid"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>このサイトはグループチャットでの共有情報をもとに作成した非公式のまとめです。内容の正確性については各自治体・保健所へ必ずご確認ください。</p>
+</footer>
+
+<script src="data/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").catch((err) => {
+        console.warn("Service worker registration failed:", err);
+      });
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9c7d5a" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#9c7d5a" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="320" fill="url(#g)"/>
+  <rect x="8" y="8" width="464" height="304" fill="none" stroke="#ffffff" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="240" y="140" font-size="72" text-anchor="middle" dominant-baseline="middle">🛖</text>
+  <text x="240" y="210" font-size="20" font-family="'Hiragino Sans', 'Noto Sans JP', sans-serif" fill="#ffffff" text-anchor="middle">離れ・物置小屋を改装</text>
+  <text x="240" y="240" font-size="14" font-family="'Hiragino Sans', 'Noto Sans JP', sans-serif" fill="#ffffff" fill-opacity="0.85" text-anchor="middle">写真は準備中（サンプル）</text>
+</svg>
