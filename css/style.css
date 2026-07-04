@@ -72,6 +72,21 @@ main {
 .intro-card p { margin: 0 0 10px; }
 .note { font-size: 0.85rem; color: #8a7460; }
 
+.notice-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: #fdf1e0;
+  border: 1px solid var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--brown-dark);
+}
+.notice-box .notice-icon { flex-shrink: 0; font-size: 1rem; line-height: 1.5; }
+
 .stats {
   display: flex;
   gap: 14px;
