@@ -1,6 +1,6 @@
 {
-  "name": "工房づくり相談アーカイブ",
-  "short_name": "工房相談",
+  "name": "工房づくり相談室",
+  "short_name": "工房相談室",
   "description": "工房を作りたい人と、すでに工房を作った先輩たちのQ&Aとプロフィールをまとめたアーカイブ",
   "start_url": "./index.html",
   "scope": "./",

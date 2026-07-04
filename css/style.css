@@ -83,7 +83,8 @@ main {
   border-left: 4px solid var(--accent);
   border-radius: 8px;
   font-size: 0.9rem;
-  color: var(--brown-dark);
+  font-weight: bold;
+  color: #b6432c;
 }
 .notice-box .notice-icon { flex-shrink: 0; font-size: 1rem; line-height: 1.5; }
 
