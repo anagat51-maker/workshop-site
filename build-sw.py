@@ -58,23 +58,25 @@ self.addEventListener("fetch", (event) => {{
   const req = event.request;
   if (req.method !== "GET") return;
 
+  // Network-first: always try to get the latest version from the internet.
+  // Only use the saved offline copy if there is no connection right now.
   event.respondWith(
-    caches.match(req).then((cached) => {{
-      if (cached) return cached;
-      return fetch(req)
-        .then((res) => {{
-          if (res && res.ok) {{
-            const resClone = res.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(req, resClone));
-          }}
-          return res;
-        }})
-        .catch(() => {{
+    fetch(req)
+      .then((res) => {{
+        if (res && res.ok) {{
+          const resClone = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(req, resClone));
+        }}
+        return res;
+      }})
+      .catch(() => {{
+        return caches.match(req).then((cached) => {{
+          if (cached) return cached;
           if (req.mode === "navigate") {{
             return caches.match("./index.html");
           }}
         }});
-    }})
+      }})
   );
 }});
 """
