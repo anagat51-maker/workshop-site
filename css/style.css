@@ -88,23 +88,6 @@ main {
 }
 .notice-box .notice-icon { flex-shrink: 0; font-size: 1rem; line-height: 1.5; }
 
-.stats {
-  display: flex;
-  gap: 14px;
-  margin-bottom: 20px;
-}
-.stat-box {
-  flex: 1;
-  background: var(--cream);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  text-align: center;
-  padding: 16px 8px;
-  box-shadow: var(--shadow);
-}
-.stat-num { font-size: 1.8rem; font-weight: bold; color: var(--accent); }
-.stat-label { font-size: 0.8rem; color: #8a7460; margin-top: 4px; }
-
 .chip-list { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
   display: inline-block;
@@ -264,5 +247,4 @@ main {
 
 @media (max-width: 600px) {
   .tab-btn { font-size: 0.82rem; padding: 10px 4px; }
-  .stats { flex-direction: column; }
 }

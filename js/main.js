@@ -72,11 +72,6 @@ function goToProfilesWithType(type) {
 
 // --- home ---
 function renderHome() {
-  document.getElementById("stat-advisors").textContent = ADVISORS.length;
-  document.getElementById("stat-qa").textContent = QA_ITEMS.length;
-  const categories = [...new Set(QA_ITEMS.map(q => q.category))];
-  document.getElementById("stat-categories").textContent = categories.length;
-
   const catCounts = {};
   QA_ITEMS.forEach(q => catCounts[q.category] = (catCounts[q.category] || 0) + 1);
   const catWrap = document.getElementById("home-category-chips");
