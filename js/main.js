@@ -114,6 +114,14 @@ function renderQaChips() {
     chip.addEventListener("click", () => { activeQaCategory = cat; renderQaChips(); renderQaList(); });
     wrap.appendChild(chip);
   });
+  scrollActiveChipIntoView(wrap);
+}
+
+// Scrolls the currently-selected chip into view within its (horizontally
+// scrolling) chip bar, so it's visible even if the list is longer than the screen.
+function scrollActiveChipIntoView(wrap) {
+  const active = wrap.querySelector(".chip.active");
+  if (active) active.scrollIntoView({ block: "nearest", inline: "center" });
 }
 
 function renderQaList() {
@@ -191,6 +199,7 @@ function renderProfileChips() {
     chip.addEventListener("click", () => { activeProfileType = type; openProfileName = null; renderProfileChips(); renderProfiles(); });
     wrap.appendChild(chip);
   });
+  scrollActiveChipIntoView(wrap);
 }
 
 function listField(arr) {
