@@ -150,19 +150,19 @@ function renderQaList() {
 
     const answersHtml = (item.answers || []).map(a => `
       <div class="qa-answer">
-        <span class="who">${escapeHtml(a.responder)}</span>${a.workshopType ? `<span class="type-badge">${escapeHtml(a.workshopType)}</span>` : ""}
-        <div class="text">${escapeHtml(a.text)}</div>
+        <span class="who">${highlightText(a.responder, term)}</span>${a.workshopType ? `<span class="type-badge">${escapeHtml(a.workshopType)}</span>` : ""}
+        <div class="text">${highlightText(a.text, term)}</div>
       </div>
     `).join("") || `<p class="note" style="padding-left:12px;">まだ回答がついていません。</p>`;
 
     card.innerHTML = `
       <div class="qa-meta">
-        <span class="qa-category-tag">${escapeHtml(item.category)}</span>
+        <span class="qa-category-tag">${highlightText(item.category, term)}</span>
         <span class="qa-date">${item.date || ""}</span>
       </div>
       <div class="qa-question">
-        <span class="who">${escapeHtml(item.question?.asker || "")}</span>
-        <span class="text">${escapeHtml(item.question?.text || "")}</span>
+        <span class="who">${highlightText(item.question?.asker || "", term)}</span>
+        <span class="text">${highlightText(item.question?.text || "", term)}</span>
       </div>
       ${answersHtml}
     `;
@@ -180,6 +180,16 @@ function escapeHtml(str) {
   return str.replace(/[&<>"']/g, s => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   }[s]));
+}
+
+// Escapes str for safe HTML output, then wraps any occurrence of the search
+// term in <mark> so matched words stand out in the Q&A search results.
+function highlightText(str, term) {
+  const escaped = escapeHtml(str);
+  if (!term) return escaped;
+  const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const re = new RegExp(escapedTerm, "gi");
+  return escaped.replace(re, (match) => `<mark class="qa-highlight">${match}</mark>`);
 }
 
 // --- Profiles view ---
